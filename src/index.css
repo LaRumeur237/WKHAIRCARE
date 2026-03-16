@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&display=swap');
+
+@import "tailwindcss";
+@theme {
+  --color-background: #0a0d1a;
+  --color-usa-red: #B22234;
+  --color-usa-blue: #3C3B6E;
+  --color-usa-white: #F5F5F5;
+  --color-gold: #d4af37;
+  --color-neon-red: #ff2d4a;
+  --color-neon-blue: #4f6fff;
+  --font-display: "Bebas Neue", sans-serif;
+  --font-sans: "Barlow Condensed", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-usa-white selection:bg-usa-red selection:text-white;
+    overflow-x: hidden;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: 0.05em;
+  }
+}
+
+@layer utilities {
+
+  /* ── USA FLAG STRIPE ACCENT ── */
+  .usa-stripe {
+    background: repeating-linear-gradient(
+      90deg,
+      #B22234 0px,
+      #B22234 40px,
+      #F5F5F5 40px,
+      #F5F5F5 50px,
+      #3C3B6E 50px,
+      #3C3B6E 90px
+    );
+  }
+
+  /* ── STARS BACKGROUND ── */
+  .stars-bg {
+    background-color: #3C3B6E;
+    background-image:
+      radial-gradient(circle, rgba(255,255,255,0.9) 1px, transparent 1px),
+      radial-gradient(circle, rgba(255,255,255,0.5) 1px, transparent 1px);
+    background-size: 30px 30px, 15px 15px;
+    background-position: 0 0, 15px 15px;
+  }
+
+  /* ── GLITCH EFFECT ── */
+  .glitch {
+    position: relative;
+    text-shadow:
+      0.05em 0 0 rgba(178, 34, 52, 0.85),
+      -0.025em -0.05em 0 rgba(255,255,255,0.5),
+      0.025em 0.05em 0 rgba(60, 59, 110, 0.85);
+    animation: glitch 500ms infinite;
+  }
+  .glitch span {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .glitch span:first-child {
+    animation: glitch 650ms infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+    transform: translate(-0.025em, -0.0125em);
+    opacity: 0.8;
+    color: #B22234;
+  }
+  .glitch span:last-child {
+    animation: glitch 375ms infinite;
+    clip-path: polygon(0 80%, 100% 20%, 100% 100%, 0 100%);
+    transform: translate(0.0125em, 0.025em);
+    opacity: 0.8;
+    color: #3C3B6E;
+  }
+
+  @keyframes glitch {
+    0%   { text-shadow: 0.05em 0 0 rgba(178,34,52,0.85), -0.05em -0.025em 0 rgba(255,255,255,0.4), -0.025em 0.05em 0 rgba(60,59,110,0.85); }
+    14%  { text-shadow: 0.05em 0 0 rgba(178,34,52,0.85), -0.05em -0.025em 0 rgba(255,255,255,0.4), -0.025em 0.05em 0 rgba(60,59,110,0.85); }
+    15%  { text-shadow: -0.05em -0.025em 0 rgba(178,34,52,0.85), 0.025em 0.025em 0 rgba(255,255,255,0.4), -0.05em -0.05em 0 rgba(60,59,110,0.85); }
+    49%  { text-shadow: -0.05em -0.025em 0 rgba(178,34,52,0.85), 0.025em 0.025em 0 rgba(255,255,255,0.4), -0.05em -0.05em 0 rgba(60,59,110,0.85); }
+    50%  { text-shadow: 0.025em 0.05em 0 rgba(178,34,52,0.85), 0.05em 0 0 rgba(255,255,255,0.4), 0 -0.05em 0 rgba(60,59,110,0.85); }
+    99%  { text-shadow: 0.025em 0.05em 0 rgba(178,34,52,0.85), 0.05em 0 0 rgba(255,255,255,0.4), 0 -0.05em 0 rgba(60,59,110,0.85); }
+    100% { text-shadow: -0.025em 0 0 rgba(178,34,52,0.85), -0.025em -0.025em 0 rgba(255,255,255,0.4), -0.025em -0.05em 0 rgba(60,59,110,0.85); }
+  }
+
+  /* ── GLOWS ── */
+  .glow-red {
+    box-shadow: 0 0 20px rgba(178, 34, 52, 0.5), 0 0 40px rgba(178, 34, 52, 0.2);
+  }
+  .glow-blue {
+    box-shadow: 0 0 20px rgba(60, 59, 110, 0.6), 0 0 40px rgba(79, 111, 255, 0.3);
+  }
+  .glow-gold {
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+  }
+  .glow-violet {
+    box-shadow: 0 0 15px rgba(79, 111, 255, 0.4);
+  }
+
+  /* ── USA GRADIENT BUTTON ── */
+  .btn-usa {
+    background: linear-gradient(135deg, #B22234 0%, #8b1a28 50%, #3C3B6E 100%);
+    border: 1px solid rgba(245, 245, 245, 0.2);
+    transition: all 0.3s ease;
+  }
+  .btn-usa:hover {
+    background: linear-gradient(135deg, #3C3B6E 0%, #B22234 100%);
+    box-shadow: 0 0 25px rgba(178, 34, 52, 0.5);
+  }
+
+  /* ── SECTION DIVIDER (drapeau) ── */
+  .divider-usa {
+    height: 4px;
+    background: linear-gradient(90deg, #B22234 33%, #F5F5F5 33%, #F5F5F5 66%, #3C3B6E 66%);
+  }
+
+  /* ── CARD USA ── */
+  .card-usa {
+    background: linear-gradient(135deg, rgba(60,59,110,0.15) 0%, rgba(10,13,26,0.9) 100%);
+    border: 1px solid rgba(178, 34, 52, 0.3);
+    transition: all 0.3s ease;
+  }
+  .card-usa:hover {
+    border-color: rgba(178, 34, 52, 0.7);
+    box-shadow: 0 8px 32px rgba(178, 34, 52, 0.2);
+    transform: translateY(-4px);
+  }
+
+  /* ── LOGO PULSE ── */
+  @keyframes logo-pulse {
+    0%, 100% { filter: drop-shadow(0 0 8px rgba(178,34,52,0.6)); }
+    50%       { filter: drop-shadow(0 0 20px rgba(60,59,110,0.8)); }
+  }
+  .logo-pulse {
+    animation: logo-pulse 3s ease-in-out infinite;
+  }
+
+  /* ── STAR SPIN ── */
+  @keyframes star-rotate {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+  .star-spin {
+    animation: star-rotate 8s linear infinite;
+  }
+}
+
+/* ── SCROLLBAR USA ── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0a0d1a; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #B22234, #3C3B6E);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover { background: #B22234; }
+
