@@ -12,30 +12,29 @@ import { MessageCircle } from "lucide-react";
 import { useGSAPAnimations } from "./lib/animations";
 import { PageTransitionProvider, PageWrapper } from "./components/PageTransition";
 
-// ── LOADER ────────────────────────────────────────────────────────────────────
+// ── LOADER ────────────────────────────────────────────────────────────────
 const Loader = () => (
   <motion.div
     initial={{ opacity: 1 }}
     exit={{ opacity: 0 }}
     transition={{ duration: 1, ease: "easeInOut" }}
-    className="fixed inset-0 z-[200] bg-background flex flex-col items-center justify-center"
+    className="fixed inset-0 z-[200] bg-background flex flex-col items-center justify-center px-4"
   >
     <motion.div
       animate={{ rotate: [0, 360], scale: [1, 1.15, 1] }}
       transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-      className="mb-8"
+      className="mb-6 md:mb-8"
     >
       <img
         src="/images/logo.jpeg"
         alt="WK Hair Care"
-        className="h-28 w-28 rounded-full object-cover border-4 border-usa-red logo-pulse"
+        className="h-20 w-20 md:h-28 md:w-28 rounded-full object-cover border-4 border-usa-red logo-pulse"
       />
     </motion.div>
 
-    {/* Barre USA */}
     <motion.div
       initial={{ width: 0 }}
-      animate={{ width: 260 }}
+      animate={{ width: "min(260px, 80vw)" }}
       transition={{ duration: 2.2, ease: "easeInOut" }}
       className="h-1.5 rounded-full overflow-hidden"
       style={{ background: "linear-gradient(90deg, #B22234 33%, #F5F5F5 33%, #F5F5F5 66%, #3C3B6E 66%)" }}
@@ -45,14 +44,14 @@ const Loader = () => (
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay: 0.5 }}
-      className="mt-5 text-white/50 uppercase tracking-[0.5em] text-xs font-bold"
+      className="mt-4 md:mt-5 text-white/50 uppercase tracking-[0.3em] md:tracking-[0.5em] text-xs font-bold text-center"
     >
       ★ WK HAIR CARE ★
     </motion.p>
   </motion.div>
 );
 
-// ── APP ───────────────────────────────────────────────────────────────────────
+// ── APP ───────────────────────────────────────────────────────────────────
 export default function App() {
   const [loading, setLoading] = useState(true);
   useGSAPAnimations();
@@ -73,42 +72,17 @@ export default function App() {
             <Navbar />
 
             <main className="relative">
-
-              {/* ── ACCUEIL ── */}
-              <PageWrapper pageId="home">
-                <Hero3D />
-              </PageWrapper>
-
-              {/* ── SERVICES ── */}
-              <PageWrapper pageId="services">
-                <Services />
-              </PageWrapper>
-
-              {/* ── GALERIE ── */}
-              <PageWrapper pageId="gallery">
-                <Gallery />
-              </PageWrapper>
-
-              {/* ── À PROPOS ── */}
-              <PageWrapper pageId="about">
-                <About />
-              </PageWrapper>
-
-              {/* ── RENDEZ-VOUS ── */}
-              <PageWrapper pageId="booking">
-                <Booking />
-              </PageWrapper>
-
-              {/* ── CONTACT ── */}
-              <PageWrapper pageId="contact">
-                <Contact />
-              </PageWrapper>
-
+              <PageWrapper pageId="home"><Hero3D /></PageWrapper>
+              <PageWrapper pageId="services"><Services /></PageWrapper>
+              <PageWrapper pageId="gallery"><Gallery /></PageWrapper>
+              <PageWrapper pageId="about"><About /></PageWrapper>
+              <PageWrapper pageId="booking"><Booking /></PageWrapper>
+              <PageWrapper pageId="contact"><Contact /></PageWrapper>
             </main>
 
             <Footer />
 
-            {/* WhatsApp flottant */}
+            {/* WhatsApp flottant — responsive */}
             <motion.a
               href="https://wa.me/237695752235"
               target="_blank"
@@ -118,10 +92,12 @@ export default function App() {
               transition={{ delay: 2, type: "spring" }}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="fixed bottom-8 right-8 z-50 w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:bg-[#128C7E] transition-all glow-red"
+              className="fixed bottom-5 right-5 md:bottom-8 md:right-8 z-50 w-12 h-12 md:w-16 md:h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:bg-[#128C7E] transition-all"
+              style={{ boxShadow: "0 0 20px rgba(37,211,102,0.4)" }}
             >
-              <MessageCircle size={32} />
-              <span className="absolute -top-2 -right-2 bg-usa-red text-white text-[10px] font-bold px-2 py-1 rounded-full animate-pulse">
+              <MessageCircle size={22} className="md:hidden" />
+              <MessageCircle size={30} className="hidden md:block" />
+              <span className="absolute -top-1 -right-1 md:-top-2 md:-right-2 bg-usa-red text-white text-[9px] md:text-[10px] font-bold px-1.5 md:px-2 py-0.5 md:py-1 rounded-full animate-pulse">
                 1
               </span>
             </motion.a>
