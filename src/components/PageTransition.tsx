@@ -17,7 +17,8 @@ const PAGE_CONFIG: Record<PageId, { tools: string[]; color: string; label: strin
   gallery:  { tools: ["📸","🖼️","📷","🎨","✨","🌟"], color: "#8b1a28", label: "Galerie" },
   about:    { tools: ["💈","💈","💈","💈","💈","💈"], color: "#1a1a5e", label: "À propos" },
   booking:  { tools: ["📅","⏰","📋","✅","🗓️","⭐"], color: "#B22234", label: "Rendez-vous" },
-  testimonials: { tools: ["?","?","?","?","?","?"], color: "#d4af37", label: "T�moignages" },`n  contact:  { tools: ["📞","💬","📱","✉️","📍","🤝"], color: "#3C3B6E", label: "contact" | "testimonials" },
+  testimonials: { tools: ["*","*","*","*","*","*"], color: "#d4af37", label: "Temoignages" },
+  contact:  { tools: ["@","@","@","@","@","@"], color: "#3C3B6E", label: "Contact" },
 };
 
 // ── CONTEXT ───────────────────────────────────────────────────────────────────
@@ -168,7 +169,8 @@ const PAGE_ENTER: Record<PageId, { initial: object; animate: object }> = {
   gallery:  { initial: { opacity: 0, y: 60 },        animate: { opacity: 1, y: 0 } },
   about:    { initial: { opacity: 0, x: -80 },       animate: { opacity: 1, x: 0 } },
   booking:  { initial: { opacity: 0, scale: 1.04 },  animate: { opacity: 1, scale: 1 } },
-  testimonials: { initial: { opacity: 0, y: 60 },        animate: { opacity: 1, y: 0 } },`n  contact:  { initial: { opacity: 0, y: -60 },       animate: { opacity: 1, y: 0 } },
+  testimonials: { initial: { opacity: 0, y: 60 },        animate: { opacity: 1, y: 0 } },
+  contact:  { initial: { opacity: 0, y: -60 },       animate: { opacity: 1, y: 0 } },
 };
 
 export const PageWrapper = ({ pageId, children }: { pageId: PageId; children: React.ReactNode }) => {

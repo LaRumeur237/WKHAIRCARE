@@ -6,7 +6,8 @@ import { Services } from "./components/Services";
 import { Gallery } from "./components/Gallery";
 import { About } from "./components/About";
 import { Booking } from "./components/Booking";
-import { Testimonials } from "./components/Testimonials";`nimport { Contact } from "./components/Contact";
+import { Testimonials } from "./components/Testimonials";
+import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import { MessageCircle } from "lucide-react";
 import { useGSAPAnimations } from "./lib/animations";
@@ -77,7 +78,8 @@ export default function App() {
               <PageWrapper pageId="gallery"><Gallery /></PageWrapper>
               <PageWrapper pageId="about"><About /></PageWrapper>
               <PageWrapper pageId="booking"><Booking /></PageWrapper>
-              <PageWrapper pageId="testimonials"><Testimonials /></PageWrapper>`n              <PageWrapper pageId="contact"><Contact /></PageWrapper>
+              <PageWrapper pageId="testimonials"><Testimonials /></PageWrapper>
+              <PageWrapper pageId="contact"><Contact /></PageWrapper>
             </main>
 
             <Footer />

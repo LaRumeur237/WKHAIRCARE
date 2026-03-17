@@ -30,7 +30,7 @@ export const Navbar = () => {
     { name: "Rendez-vous", page: "booking" },
     { name: "Temoignages", page: "testimonials" },
     { name: "Contact",     page: "contact" },
-
+  ];
   const handleNav = (page: PageId) => {
     setIsOpen(false);
     navigateTo(page);
