@@ -161,36 +161,27 @@ _Merci de confirmer ce rendez-vous au client dès que possible._ `;
                 prestation est obligatoire. Le montant exact et le numéro de
                 paiement vous seront communiqués par notre responsable.
               </p>
-              <div className="flex flex-wrap gap-3">
-                <div className="flex items-center gap-2 bg-[#FF6600]/15 border border-[#FF6600]/30 rounded-xl px-4 py-2.5">
-                  <Smartphone className="w-4 h-4 text-[#FF6600]" />
-                  <span className="text-[#FF6600] font-bold text-xs uppercase tracking-wider">Orange Money</span>
+              <div className="flex flex-col gap-3">
+                <div className="flex items-center justify-between bg-[#FF6600]/15 border border-[#FF6600]/30 rounded-xl px-4 py-3">
+                  <div className="flex items-center gap-2">
+                    <Smartphone className="w-4 h-4 text-[#FF6600]" />
+                    <span className="text-[#FF6600] font-bold text-xs uppercase tracking-wider">Orange Money</span>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-white/80 font-bold text-sm">695 75 22 35</p>
+                    <p className="text-white/40 text-xs">Wilfried Kemche</p>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2 bg-[#FFCC00]/10 border border-[#FFCC00]/30 rounded-xl px-4 py-2.5">
-                  <Smartphone className="w-4 h-4 text-[#FFCC00]" />
-                  <span className="text-[#FFCC00] font-bold text-xs uppercase tracking-wider">MTN MoMo</span>
+                <div className="flex items-center justify-between bg-[#FFCC00]/10 border border-[#FFCC00]/30 rounded-xl px-4 py-3">
+                  <div className="flex items-center gap-2">
+                    <Smartphone className="w-4 h-4 text-[#FFCC00]" />
+                    <span className="text-[#FFCC00] font-bold text-xs uppercase tracking-wider">MTN MoMo</span>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-white/80 font-bold text-sm">680 04 03 90</p>
+                    <p className="text-white/40 text-xs">Wilfried Kemche</p>
+                  </div>
                 </div>
-              </div>
-            </div>
-
-            {/* Aperçu message */}
-            <div className="rounded-2xl border border-white/8 bg-white/3 p-6 backdrop-blur-sm">
-              <h3 className="text-[11px] font-bold uppercase tracking-[0.25em] text-white/35 mb-4">
-                Aperçu du message WhatsApp
-              </h3>
-              <div
-                className="rounded-xl p-4 text-[11px] leading-relaxed font-mono text-white/45 space-y-0.5"
-                style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}
-              >
-                <p><span className="text-white/70">✂️ <strong>WK HAIR CARE</strong></span></p>
-                <p className="text-white/25">━━━━━━━━━━━━━━━━</p>
-                <p>👤 <span className="text-white/55">CLIENT</span></p>
-                <p className="pl-2">┣ Nom · Téléphone</p>
-                <p>🗓️ <span className="text-white/55">RENDEZ-VOUS</span></p>
-                <p className="pl-2">┣ Service · Date · Heure</p>
-                <p>💳 <span className="text-white/55">ACOMPTE 25%</span></p>
-                <p className="pl-2">┗ 🟠 Orange Money / 🟡 MTN</p>
-                <p className="text-white/25">━━━━━━━━━━━━━━━━</p>
               </div>
             </div>
           </motion.div>
@@ -357,3 +348,4 @@ _Merci de confirmer ce rendez-vous au client dès que possible._ `;
     </section>
   );
 };
+
