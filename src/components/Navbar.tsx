@@ -28,8 +28,8 @@ export const Navbar = () => {
     { name: "Services",    page: "services" },
     { name: "Galerie",     page: "gallery" },
     { name: "Rendez-vous", page: "booking" },
-    { name: "Temoignages", page: "testimonials" },`n    { name: "Contact",     page: "contact" },
-  ];
+    { name: "Temoignages", page: "testimonials" },
+    { name: "Contact",     page: "contact" },
 
   const handleNav = (page: PageId) => {
     setIsOpen(false);
