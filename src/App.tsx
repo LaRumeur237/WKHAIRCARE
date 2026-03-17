@@ -26,7 +26,7 @@ const Loader = () => (
       className="mb-6 md:mb-8"
     >
       <img
-        src="/images/logo.jpeg"
+        src="/images/logoWK.jpeg"
         alt="WK Hair Care"
         className="h-20 w-20 md:h-28 md:w-28 rounded-full object-cover border-4 border-usa-red logo-pulse"
       />
@@ -107,3 +107,4 @@ export default function App() {
     </PageTransitionProvider>
   );
 }
+

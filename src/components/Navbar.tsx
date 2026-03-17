@@ -59,7 +59,7 @@ export const Navbar = () => {
             className="flex items-center gap-2 md:gap-3 min-w-0"
           >
             <img
-              src="/images/logo.jpeg"
+              src="/images/logoWK.jpeg"
               alt="WK Hair Care"
               className="h-9 w-9 md:h-12 md:w-12 rounded-full object-cover border-2 border-usa-red logo-pulse flex-shrink-0"
             />
@@ -163,7 +163,7 @@ export const Navbar = () => {
             </button>
 
             <img
-              src="/images/logo.jpeg"
+              src="/images/logoWK.jpeg"
               alt="WK Hair Care"
               className="h-16 w-16 md:h-20 md:w-20 rounded-full object-cover border-4 border-usa-red logo-pulse mb-1"
             />
@@ -209,5 +209,6 @@ export const Navbar = () => {
     </>
   );
 };
+
 
 
