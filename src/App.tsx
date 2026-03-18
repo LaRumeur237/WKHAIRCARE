@@ -83,26 +83,6 @@ export default function App() {
             </main>
 
             <Footer />
-
-            {/* WhatsApp flottant — responsive */}
-            <motion.a
-              href="https://wa.me/237695752235"
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 2, type: "spring" }}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="fixed bottom-5 right-5 md:bottom-8 md:right-8 z-50 w-12 h-12 md:w-16 md:h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:bg-[#128C7E] transition-all"
-              style={{ boxShadow: "0 0 20px rgba(37,211,102,0.4)" }}
-            >
-              <MessageCircle size={22} className="md:hidden" />
-              <MessageCircle size={30} className="hidden md:block" />
-              <span className="absolute -top-1 -right-1 md:-top-2 md:-right-2 bg-usa-red text-white text-[9px] md:text-[10px] font-bold px-1.5 md:px-2 py-0.5 md:py-1 rounded-full animate-pulse">
-                1
-              </span>
-            </motion.a>
           </motion.div>
         )}
       </div>
