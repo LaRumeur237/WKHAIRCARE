@@ -26,6 +26,12 @@ const albums: Album[] = [
       "/imagesWK/coiffurehomme1.jpeg",
       "/imagesWK/coiffurehomme2.jpeg",
       "/imagesWK/coiffurehomme3.jpeg",
+      "/imagesWK/coiffurehomme4.jpeg",
+      "/imagesWK/coiffurehomme5.jpeg",
+      "/imagesWK/coiffurehomme6.jpeg",
+      "/imagesWK/coiffurehomme7.jpeg",
+      "/imagesWK/coiffurehomme8.jpeg",
+      "/imagesWK/coiffurehomme9.jpeg",
     ],
   },
   {
