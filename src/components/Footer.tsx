@@ -384,7 +384,7 @@ export const Footer = () => {
                 className="w-9 h-9 md:w-10 md:h-10 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-white/40 hover:text-[#25D366] hover:border-[#25D366] transition-all">
                 <MessageCircle size={16} />
               </a>
-              <a href="https://www.tiktok.com/@kemchewilfried" target="_blank" rel="noopener noreferrer"
+              <a href="https://www.tiktok.com/@wilfriedkemche4" target="_blank" rel="noopener noreferrer"
                 className="w-9 h-9 md:w-10 md:h-10 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-white/40 hover:text-white hover:border-white hover:bg-black transition-all">
                 <TikTokIcon />
               </a>
