@@ -21,9 +21,7 @@ const albums: Album[] = [
     emoji: "✂️",
     color: "from-usa-blue/40 to-background",
     accent: "text-neon-blue",
-    cover: "/imagesWK/coiffurehomme1.jpeg",
-    photos: [
-      "/imagesWK/coiffurehomme1.jpeg",
+    cover: photos: [
       "/imagesWK/coiffurehomme2.jpeg",
       "/imagesWK/coiffurehomme3.jpeg",
       "/imagesWK/coiffurehomme4.jpeg",

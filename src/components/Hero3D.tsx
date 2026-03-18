@@ -9,7 +9,6 @@ import { usePageTransition } from "./PageTransition";
 
 // ── Photos galerie ────────────────────────────────────────────────────────
 const GALLERY_PHOTOS = [
-  "/imagesWK/coiffurehomme1.jpeg",
   "/imagesWK/coiffurehomme2.jpeg",
   "/imagesWK/coiffurehomme3.jpeg",
   "/imagesWK/manucure1.jpeg",
