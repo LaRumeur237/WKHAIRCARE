@@ -11,6 +11,7 @@ import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import { MessageCircle } from "lucide-react";
 import { useGSAPAnimations } from "./lib/animations";
+import { LangProvider } from "./components/Footer";
 import { PageTransitionProvider, PageWrapper } from "./components/PageTransition";
 
 // ── LOADER ────────────────────────────────────────────────────────────────
@@ -63,7 +64,7 @@ export default function App() {
   }, []);
 
   return (
-    <PageTransitionProvider>
+    <LangProvider><PageTransitionProvider>
       <div className="relative min-h-screen bg-background text-white selection:bg-usa-red selection:text-white">
 
         <AnimatePresence>{loading && <Loader />}</AnimatePresence>
@@ -86,9 +87,11 @@ export default function App() {
           </motion.div>
         )}
       </div>
-    </PageTransitionProvider>
+    </PageTransitionProvider></LangProvider>
   );
 }
+
+
 
 
 
