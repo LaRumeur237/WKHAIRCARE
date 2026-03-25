@@ -1,18 +1,25 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { MapPin, Clock, Send, CheckCircle, AlertCircle, ChevronDown, Smartphone, Scissors } from "lucide-react";
+import { MapPin, Clock, Send, CheckCircle, AlertCircle, Smartphone, Scissors } from "lucide-react";
 
 export const Booking = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [selectedServices, setSelectedServices] = useState<string[]>([]);
 
   const services = [
-    "Coiffure Homme",
-    "Coiffure Femme",
-    "Manucure",
-    "Pédicure",
-    "Soin du Visage",
-    "Forfait Complet",
+    { id: "homme",   label: "Coiffure Homme",  icon: "✂️" },
+    { id: "femme",   label: "Coiffure Femme",  icon: "💇‍♀️" },
+    { id: "manuc",   label: "Manucure",         icon: "💅" },
+    { id: "pedic",   label: "Pédicure",         icon: "🦶" },
+    { id: "visage",  label: "Soin du Visage",   icon: "✨" },
+    { id: "forfait", label: "Forfait Complet",  icon: "⭐" },
   ];
+
+  const toggleService = (id: string) => {
+    setSelectedServices((prev) =>
+      prev.includes(id) ? prev.filter((s) => s !== id) : [...prev, id]
+    );
+  };
 
   const formatDate = (dateStr: string) => {
     if (!dateStr) return dateStr;
@@ -29,13 +36,18 @@ export const Booking = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (selectedServices.length === 0) return;
+
     const formData = new FormData(e.target as HTMLFormElement);
-    const name    = formData.get("name")    as string;
-    const phone   = formData.get("phone")   as string;
-    const service = formData.get("service") as string;
-    const date    = formData.get("date")    as string;
-    const time    = formData.get("time")    as string;
-    const notes   = formData.get("notes")   as string;
+    const name  = formData.get("name")  as string;
+    const phone = formData.get("phone") as string;
+    const date  = formData.get("date")  as string;
+    const time  = formData.get("time")  as string;
+    const notes = formData.get("notes") as string;
+
+    const serviceLabels = selectedServices
+      .map((id) => services.find((s) => s.id === id)?.label ?? id)
+      .join(", ");
 
     const sep = "━━━━━━━━━━━━━━━━━━━━━━";
 
@@ -48,9 +60,9 @@ ${sep}
 ┗ Téléphone   : *${phone}*
 
  *RENDEZ-VOUS*
-┣ Service : *${service}*
-┣ Date    : *${formatDate(date)}*
-┗ Heure   : *${formatTime(time)}*
+┣ Service(s)  : *${serviceLabels}*
+┣ Date        : *${formatDate(date)}*
+┗ Heure       : *${formatTime(time)}*
 ${notes ? `\n *NOTES DU CLIENT*\n┗ _${notes}_\n` : ""}
 ${sep}
 
@@ -71,7 +83,6 @@ _Merci de confirmer ce rendez-vous au client dès que possible._ `;
 
   return (
     <section id="booking" className="relative py-28 px-6 overflow-hidden">
-      {/* Background */}
       <div className="absolute inset-0 bg-background" />
       <div
         className="absolute inset-0 opacity-30"
@@ -115,7 +126,6 @@ _Merci de confirmer ce rendez-vous au client dès que possible._ `;
             transition={{ delay: 0.1 }}
             className="lg:col-span-2 space-y-5"
           >
-            {/* Horaires & Adresse */}
             <div className="rounded-2xl border border-white/8 bg-white/3 p-7 space-y-6 backdrop-blur-sm">
               <h3 className="text-[11px] font-bold uppercase tracking-[0.25em] text-white/35">
                 Informations pratiques
@@ -144,7 +154,6 @@ _Merci de confirmer ce rendez-vous au client dès que possible._ `;
               </div>
             </div>
 
-            {/* Acompte card */}
             <div className="rounded-2xl border border-gold/30 bg-gold/5 p-7 relative overflow-hidden">
               <div className="absolute top-0 left-0 w-1 h-full bg-gold rounded-l-2xl" />
               <div className="flex items-center gap-3 mb-4">
@@ -158,8 +167,7 @@ _Merci de confirmer ce rendez-vous au client dès que possible._ `;
               <p className="text-white/65 text-sm leading-relaxed mb-5">
                 Pour confirmer votre réservation, un acompte de{" "}
                 <span className="text-gold font-bold">25%</span> du montant de la
-                prestation est obligatoire. Le montant exact et le numéro de
-                paiement vous seront communiqués par notre responsable.
+                prestation est obligatoire.
               </p>
               <div className="flex flex-col gap-3">
                 <div className="flex items-center justify-between bg-[#FF6600]/15 border border-[#FF6600]/30 rounded-xl px-4 py-3">
@@ -227,21 +235,106 @@ _Merci de confirmer ce rendez-vous au client dès que possible._ `;
                       </div>
                     </div>
 
-                    {/* Service — SANS PRIX */}
-                    <div className="space-y-1.5">
-                      <label className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/35">Service souhaité *</label>
-                      <div className="relative">
-                        <select
-                          name="service" required
-                          className="w-full bg-white/5 border border-white/10 hover:border-white/20 focus:border-gold rounded-xl px-4 py-3.5 outline-none transition-all text-sm appearance-none cursor-pointer"
-                        >
-                          <option value="" className="bg-[#0a0d1a]">— Choisir un service —</option>
-                          {services.map((s) => (
-                            <option key={s} value={s} className="bg-[#0a0d1a]">{s}</option>
-                          ))}
-                        </select>
-                        <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30 pointer-events-none" />
+                    {/* ── SERVICES MULTI-SELECT ── */}
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <label className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/35">
+                          Services souhaités *
+                        </label>
+                        {selectedServices.length > 0 && (
+                          <motion.span
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            className="text-[11px] font-bold text-gold bg-gold/10 border border-gold/30 px-2.5 py-1 rounded-full"
+                          >
+                            {selectedServices.length} sélectionné{selectedServices.length > 1 ? "s" : ""}
+                          </motion.span>
+                        )}
                       </div>
+
+                      <div className="grid grid-cols-2 gap-2.5">
+                        {services.map((service) => {
+                          const isSelected = selectedServices.includes(service.id);
+                          return (
+                            <motion.button
+                              key={service.id}
+                              type="button"
+                              onClick={() => toggleService(service.id)}
+                              whileHover={{ scale: 1.02 }}
+                              whileTap={{ scale: 0.97 }}
+                              className="relative flex items-center gap-3 px-4 py-3.5 rounded-xl border transition-all text-left overflow-hidden"
+                              style={{
+                                background: isSelected
+                                  ? "linear-gradient(135deg, rgba(178,34,52,0.2), rgba(60,59,110,0.2))"
+                                  : "rgba(255,255,255,0.03)",
+                                borderColor: isSelected
+                                  ? "rgba(178,34,52,0.6)"
+                                  : "rgba(255,255,255,0.08)",
+                              }}
+                            >
+                              {/* Glow si sélectionné */}
+                              {isSelected && (
+                                <motion.div
+                                  layoutId={`glow-${service.id}`}
+                                  className="absolute inset-0 rounded-xl"
+                                  style={{
+                                    boxShadow: "inset 0 0 20px rgba(178,34,52,0.15)",
+                                  }}
+                                />
+                              )}
+
+                              {/* Checkbox custom */}
+                              <div
+                                className="relative flex-shrink-0 w-5 h-5 rounded-md border-2 flex items-center justify-center transition-all"
+                                style={{
+                                  borderColor: isSelected ? "#B22234" : "rgba(255,255,255,0.2)",
+                                  background: isSelected
+                                    ? "linear-gradient(135deg, #B22234, #3C3B6E)"
+                                    : "transparent",
+                                }}
+                              >
+                                <AnimatePresence>
+                                  {isSelected && (
+                                    <motion.svg
+                                      initial={{ scale: 0, opacity: 0 }}
+                                      animate={{ scale: 1, opacity: 1 }}
+                                      exit={{ scale: 0, opacity: 0 }}
+                                      transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                                      className="w-3 h-3 text-white"
+                                      viewBox="0 0 12 12"
+                                      fill="none"
+                                    >
+                                      <path
+                                        d="M2 6l3 3 5-5"
+                                        stroke="currentColor"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                      />
+                                    </motion.svg>
+                                  )}
+                                </AnimatePresence>
+                              </div>
+
+                              {/* Emoji + Label */}
+                              <span className="text-lg leading-none">{service.icon}</span>
+                              <span
+                                className="text-sm font-semibold transition-colors"
+                                style={{ color: isSelected ? "#fff" : "rgba(255,255,255,0.6)" }}
+                              >
+                                {service.label}
+                              </span>
+                            </motion.button>
+                          );
+                        })}
+                      </div>
+
+                      {/* Message si rien sélectionné au submit */}
+                      {selectedServices.length === 0 && (
+                        <p className="text-[11px] text-white/25 mt-1">
+                          Cochez un ou plusieurs services
+                        </p>
+                      )}
                     </div>
 
                     {/* Date + Heure */}
@@ -289,14 +382,20 @@ _Merci de confirmer ce rendez-vous au client dès que possible._ `;
 
                     {/* Bouton */}
                     <motion.button
-                      whileHover={{ scale: 1.015 }}
-                      whileTap={{ scale: 0.985 }}
+                      whileHover={{ scale: selectedServices.length > 0 ? 1.015 : 1 }}
+                      whileTap={{ scale: selectedServices.length > 0 ? 0.985 : 1 }}
                       type="submit"
-                      className="w-full rounded-xl py-4 font-black uppercase tracking-widest text-sm flex items-center justify-center gap-3 group"
+                      disabled={selectedServices.length === 0}
+                      className="w-full rounded-xl py-4 font-black uppercase tracking-widest text-sm flex items-center justify-center gap-3 group transition-all"
                       style={{
-                        background: "linear-gradient(135deg, #d4af37 0%, #f0c040 50%, #d4af37 100%)",
-                        color: "#0a0d1a",
-                        boxShadow: "0 0 30px rgba(212,175,55,0.25), 0 4px 16px rgba(0,0,0,0.4)",
+                        background: selectedServices.length > 0
+                          ? "linear-gradient(135deg, #d4af37 0%, #f0c040 50%, #d4af37 100%)"
+                          : "rgba(255,255,255,0.05)",
+                        color: selectedServices.length > 0 ? "#0a0d1a" : "rgba(255,255,255,0.2)",
+                        boxShadow: selectedServices.length > 0
+                          ? "0 0 30px rgba(212,175,55,0.25), 0 4px 16px rgba(0,0,0,0.4)"
+                          : "none",
+                        cursor: selectedServices.length > 0 ? "pointer" : "not-allowed",
                       }}
                     >
                       <span>Envoyer via WhatsApp</span>
@@ -333,7 +432,7 @@ _Merci de confirmer ce rendez-vous au client dès que possible._ `;
                     </div>
                   </div>
                   <button
-                    onClick={() => setSubmitted(false)}
+                    onClick={() => { setSubmitted(false); setSelectedServices([]); }}
                     className="text-white/30 hover:text-white/60 text-xs uppercase tracking-widest transition-colors mt-2"
                   >
                     Faire une autre réservation
@@ -348,4 +447,3 @@ _Merci de confirmer ce rendez-vous au client dès que possible._ `;
     </section>
   );
 };
-
