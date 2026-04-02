@@ -47,7 +47,7 @@ export const Contact = () => {
                 </div>
                 <div>
                   <p className="font-bold text-sm uppercase tracking-wider mb-1">Téléphone</p>
-                  <a href="tel:+237695752235" className="block text-white/55 text-sm hover:text-gold transition-colors">+237 695 75 22 35</a>
+                  <a href="tel:+237679234480" className="block text-white/55 text-sm hover:text-gold transition-colors">+237 695 75 22 35</a>
                   <a href="tel:+237679234480" className="block text-white/55 text-sm hover:text-gold transition-colors">+237 679 23 44 80</a>
                 </div>
               </div>
@@ -75,7 +75,7 @@ export const Contact = () => {
                 <a href="#" className="w-11 h-11 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center hover:bg-gold hover:text-background hover:border-gold transition-all">
                   <Facebook size={18} />
                 </a>
-                <a href="https://wa.me/237695752235" className="w-11 h-11 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center hover:bg-[#25D366] hover:border-[#25D366] transition-all">
+                <a href="https://wa.me/237679234480" className="w-11 h-11 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center hover:bg-[#25D366] hover:border-[#25D366] transition-all">
                   <MessageCircle size={18} />
                 </a>
               </div>

@@ -98,7 +98,7 @@ export const Navbar = () => {
               </motion.button>
             ))}
             <motion.a
-              href="https://wa.me/237695752235"
+              href="https://wa.me/237679234480"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
@@ -191,13 +191,13 @@ export const Navbar = () => {
 
             <div className="flex gap-4 mt-2">
               <a
-                href="tel:+237695752235"
+                href="tel:+237679234480"
                 className="p-3 md:p-4 rounded-full border border-usa-red/40 bg-usa-red/20 hover:bg-usa-red text-white transition-all"
               >
                 <Phone size={20} />
               </a>
               <a
-                href="https://wa.me/237695752235"
+                href="https://wa.me/237679234480"
                 className="p-3 md:p-4 rounded-full border border-usa-blue/40 bg-usa-blue/20 hover:bg-usa-blue text-white transition-all"
               >
                 <MessageCircle size={20} />

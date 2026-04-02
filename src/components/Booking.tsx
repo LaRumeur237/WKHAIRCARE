@@ -75,7 +75,7 @@ ${sep}
 _Merci de confirmer ce rendez-vous au client dès que possible._ `;
 
     window.open(
-      `https://wa.me/237695752235?text=${encodeURIComponent(message)}`,
+      `https://wa.me/237679234480?text=${encodeURIComponent(message)}`,
       "_blank"
     );
     setSubmitted(true);
