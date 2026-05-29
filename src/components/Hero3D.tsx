@@ -253,7 +253,7 @@ export const Hero3D = () => {
             </motion.button>
 
             <motion.a
-              href="https://wa.me/237679234480"
+              href="https://wa.me/237695752235"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.06 }}
